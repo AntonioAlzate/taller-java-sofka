@@ -27,7 +27,3 @@ g
 7src/main/java/co/sofka/taller/ejercicio13/Solucion.java,6\4\6429de2978658593d970e3f018b27473e34409e9
 g
 7src/main/java/co/sofka/taller/ejercicio15/Solucion.java,3\d\3d1be02088e216d4725f1c63289f13848957048e
-c
-3src/main/java/co/sofka/taller/ejercicio16/Main.java,7\c\7cf62304aa68b392f70d6a41430c58d2ab8a985b
-f
-6src/main/java/co/sofka/taller/ejercicio16/Persona.java,8\a\8a0d679845d281390ab43ed6b81fe4d3c3231a6b

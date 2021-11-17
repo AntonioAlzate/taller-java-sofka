@@ -8,8 +8,8 @@ public class Persona {
     public static final int PESO_IDEAL = -1;
     public static final char SEXO_HOMBRE = 'H';
     public static final char SEXO_MUJER = 'M';
-    private static final long MINIMO_VALOR_DNI = 10000000;
-    private static final long MAXIMO_VALOR_DNI = 99999999;
+    private static final int MINIMO_VALOR_DNI = 10000000;
+    private static final int MAXIMO_VALOR_DNI = 99999999;
 
     // Propiedades
     private String nombre;
@@ -17,7 +17,7 @@ public class Persona {
     private char sexo;
     private double peso;
     private double altura;
-    private long DNI;
+    private String DNI;
 
     public Persona() {
         this.nombre = "";
@@ -46,21 +46,38 @@ public class Persona {
         comprobarSexo(sexo);
     }
 
-    private long generarDNI() {
-        long rango = (MAXIMO_VALOR_DNI - MINIMO_VALOR_DNI) + 1;
-        long numeroAleatorio = (long) (Math.random() * rango) + MINIMO_VALOR_DNI;
-        return numeroAleatorio;
+    private String generarDNI() {
+        int rango = (MAXIMO_VALOR_DNI - MINIMO_VALOR_DNI) + 1;
+        int numeroAleatorio = (int) (Math.random() * rango) + MINIMO_VALOR_DNI;
+        ;
+        char letraAsociada = calcularLetra(numeroAleatorio);
+
+        String dniGenerado = String.valueOf(numeroAleatorio) + letraAsociada;
+
+        return dniGenerado;
+    }
+
+    private char calcularLetra(int numeroAleatorio) {
+        int resto = numeroAleatorio % 23;
+
+        return TablaLetras.calcularLetra(resto);
     }
 
     public int calcularIMC() {
-        double valorFormula = peso / (Math.pow(altura, 2));
 
-        if (valorFormula < 20)
-            return ABAJO_PESO_IDEAL;
-        else if (valorFormula >= 20 && valorFormula <= 25)
-            return PESO_IDEAL;
-        else
-            return SOBREPESO;
+        if (altura > 0 && peso > 0) {
+            double valorFormula = peso / (Math.pow(altura, 2));
+
+            if (valorFormula < 20)
+                return ABAJO_PESO_IDEAL;
+            else if (valorFormula >= 20 && valorFormula <= 25)
+                return PESO_IDEAL;
+            else
+                return SOBREPESO;
+        }
+        else {
+            return 2;
+        }
     }
 
     public boolean esMayorDeEdad() {
@@ -97,7 +114,7 @@ public class Persona {
     }
 
     public void setSexo(char sexo) {
-        this.sexo = sexo;
+        comprobarSexo(sexo);
     }
 
     public void setPeso(double peso) {

@@ -55,6 +55,8 @@ public class Main {
                 System.out.println("La persona número " + (i+1) + " se encuentra abajo de su peso ideal A COMER!");
             } else if (personas.get(i).calcularIMC() == Persona.SOBREPESO) {
                 System.out.println("La persona número " + (i+1) + " se encuentra con sobrepeso A CUIDARSE!");
+            } else {
+                System.out.println("NO SE PUEDE CALCULAR SIN ASIGNAR UN PESO Y UNA ALTURA");
             }
         }
 
